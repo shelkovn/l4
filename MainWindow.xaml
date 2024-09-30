@@ -1,0 +1,25 @@
+﻿<Window x:Class="l4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:l4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="t0" Margin="30" Grid.Row="1" Grid.ColumnSpan="2" Text="10"/>
+        <TextBox x:Name="t1" Grid.Row="2" FontSize="{Binding ElementName=t0, Path=Text, Mode=TwoWay}"/>
+        <TextBox x:Name="t2" Grid.Column="1" Grid.Row="2" Text="{Binding ElementName=t1, Path=Text, UpdateSourceTrigger=PropertyChanged}" FontSize="{Binding ElementName=t1, Path=FontSize, Mode=TwoWay}"/>
+        <Slider x:Name="slider1" Maximum="100" Value="{Binding ElementName=t0, Path=Text, Mode=TwoWay}"/>
+        <Slider x:Name="slider2" Grid.Column="1" Value="{Binding ElementName=slider1, Path=Value}" />
+    </Grid>
+</Window>
